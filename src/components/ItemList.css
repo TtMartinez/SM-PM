@@ -1,0 +1,8 @@
+.item-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem 2rem 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}

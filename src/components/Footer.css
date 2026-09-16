@@ -1,0 +1,13 @@
+.footer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  background-color: #2b1b3d;
+  color: #c9a9e0;
+  margin-top: 2rem;
+}
+
+.footer-sub {
+  font-size: 0.75rem;
+  color: #8a6fa8;
+  margin-top: 0.3rem;
+}

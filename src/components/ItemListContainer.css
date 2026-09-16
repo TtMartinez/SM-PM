@@ -1,0 +1,10 @@
+.item-list-container {
+  text-align: center;
+  padding: 3rem 1rem 1rem;
+}
+
+.item-list-container h1 {
+  font-size: 1.8rem;
+  color: #2b1b3d;
+  margin-bottom: 1.5rem;
+}
