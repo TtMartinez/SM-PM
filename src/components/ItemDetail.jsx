@@ -1,11 +1,17 @@
+import { useState } from "react"
+import { Link } from "react-router-dom"
+import { useCart } from "../context/CartContext"
 import ItemCount from "./ItemCount"
 import "./ItemDetail.css"
 
 function ItemDetail({ product }) {
   const { title, category, detail, price, stock, volume, image } = product
+  const { addItem, isInCart } = useCart()
+  const [added, setAdded] = useState(false)
 
   const handleAdd = (quantity) => {
-    console.log(`Agregaste ${quantity} unidad(es) de ${title} al carrito`)
+    addItem(product, quantity)
+    setAdded(true)
   }
 
   return (
@@ -22,7 +28,21 @@ function ItemDetail({ product }) {
         <p className="detail-price">${price.toLocaleString("es-AR")}</p>
         <p className="detail-stock">Stock disponible: {stock} unidades</p>
 
-        <ItemCount stock={stock} onAdd={handleAdd} />
+        {added || isInCart(product.id) ? (
+          <div className="added-confirmation">
+            <p>Producto agregado al carrito ✅</p>
+            <div className="added-actions">
+              <Link to="/cart" className="btn-primary">
+                Ir al carrito
+              </Link>
+              <Link to="/" className="btn-secondary">
+                Seguir comprando
+              </Link>
+            </div>
+          </div>
+        ) : (
+          <ItemCount stock={stock} onAdd={handleAdd} />
+        )}
       </div>
     </div>
   )

@@ -59,3 +59,19 @@
   font-size: 0.9rem;
   color: #666;
 }
+
+.added-confirmation {
+  margin-top: 1.5rem;
+}
+
+.added-confirmation p {
+  color: #2b8a3e;
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+}
+
+.added-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
