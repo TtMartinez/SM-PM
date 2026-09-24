@@ -52,3 +52,39 @@
 .navbar-categories a:hover {
   color: #c9a9e0;
 }
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.navbar-user {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+}
+
+.navbar-user-email {
+  color: #c9a9e0;
+}
+
+.navbar-logout {
+  background: none;
+  border: 1px solid #c9a9e0;
+  color: #fff;
+  border-radius: 6px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.navbar-login {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  border: 1px solid #fff;
+  border-radius: 6px;
+  padding: 0.35rem 0.8rem;
+}

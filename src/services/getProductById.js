@@ -1,15 +1,13 @@
-import { products } from "./products"
+import { doc, getDoc } from "firebase/firestore"
+import { db } from "../firebase/config"
 
-export const getProductById = (productId) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const product = products.find((p) => p.id === productId)
+export const getProductById = async (productId) => {
+  const productRef = doc(db, "products", productId)
+  const snapshot = await getDoc(productRef)
 
-      if (product) {
-        resolve(product)
-      } else {
-        reject(new Error("Producto no encontrado"))
-      }
-    }, 500)
-  })
+  if (!snapshot.exists()) {
+    throw new Error("Producto no encontrado")
+  }
+
+  return { id: snapshot.id, ...snapshot.data() }
 }

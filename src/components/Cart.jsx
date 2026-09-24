@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useCart } from "../context/CartContext"
 import "./Cart.css"
 
 function Cart() {
   const { cart, removeItem, clear, totalPrice } = useCart()
+  const navigate = useNavigate()
 
   if (cart.length === 0) {
     return (
@@ -54,7 +55,7 @@ function Cart() {
           <strong>${totalPrice.toLocaleString("es-AR")}</strong>
         </div>
 
-        <button className="btn-primary" onClick={() => alert("¡Compra finalizada! (placeholder)")}>
+                <button className="btn-primary" onClick={() => navigate("/checkout")}>
           Finalizar compra
         </button>
       </div>

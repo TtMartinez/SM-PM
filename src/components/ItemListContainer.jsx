@@ -8,20 +8,16 @@ function ItemListContainer({ greeting }) {
   const { categoryId } = useParams()
   const [items, setItems] = useState([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     setLoading(true)
+    setError(null)
 
-    const fetchProducts = async () => {
-      const products = await getProducts()
-      const filtered = categoryId
-        ? products.filter((product) => product.categorySlug === categoryId)
-        : products
-      setItems(filtered)
-      setLoading(false)
-    }
-
-    fetchProducts()
+    getProducts(categoryId)
+      .then((products) => setItems(products))
+      .catch(() => setError("No se pudieron cargar los productos."))
+      .finally(() => setLoading(false))
   }, [categoryId])
 
   return (
@@ -29,6 +25,8 @@ function ItemListContainer({ greeting }) {
       <h1>{greeting}</h1>
       {loading ? (
         <p className="loading-message">Cargando productos...</p>
+      ) : error ? (
+        <p className="loading-message">{error}</p>
       ) : items.length === 0 ? (
         <p className="loading-message">No hay productos en esta categoría.</p>
       ) : (

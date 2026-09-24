@@ -13,7 +13,7 @@ function ItemDetailContainer() {
     setLoading(true)
     setError(null)
 
-    getProductById(Number(id))
+    getProductById(id)
       .then((result) => setProduct(result))
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false))
